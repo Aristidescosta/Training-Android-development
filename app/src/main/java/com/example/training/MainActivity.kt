@@ -3,6 +3,7 @@ package com.example.training
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,10 +35,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText(
-                        "Kiesse",
-                        "Aristides",
-                        modifier = Modifier.padding(8.dp)
+                    GreetingImage(
+                        stringResource(R.string.feliz_aniversario_kiesse),
+                        "Aristides"
                     )
                 }
             }
@@ -44,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(
-    name: String,
+    message: String,
     from: String,
     modifier: Modifier = Modifier
 ) {
@@ -53,7 +56,7 @@ fun GreetingText(
         modifier = modifier
     ) {
         Text(
-            text = "Feliz aniversário $name",
+            text = message,
             fontSize = 100.sp,
             lineHeight = 116.sp,
             textAlign = TextAlign.Center
@@ -62,9 +65,36 @@ fun GreetingText(
         Text(
             text = "De $from",
             fontSize = 36.sp,
-            modifier = modifier
+            modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
+        )
+    }
+}
+
+@Composable
+fun GreetingImage(
+    message: String,
+    from: String,
+    modifier: Modifier = Modifier
+) {
+    val imageRes = painterResource(id = R.drawable.hbd1)
+    Box(modifier = modifier) {
+        Image(
+            painter = imageRes,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
+            alignment = Alignment.Center,
+            alpha = 0.5F
+        )
+
+        GreetingText(
+            message = message,
+            from = from,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)
         )
     }
 }
@@ -73,10 +103,9 @@ fun GreetingText(
 @Composable
 fun GreetingPreview() {
     TrainingTheme {
-        GreetingText(
-            "Kiesse",
-            "Aristides",
-            modifier = Modifier.padding(8.dp)
+        GreetingImage(
+            stringResource(R.string.feliz_aniversario_kiesse),
+            "Aristides"
         )
     }
 }
