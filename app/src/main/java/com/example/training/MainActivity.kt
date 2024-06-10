@@ -42,10 +42,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
-                    contentColor = Color(0xFF3ddc84)
+                    color = MaterialTheme.colorScheme.background
                 ) {
-
+                    Card(modifier = Modifier.fillMaxSize())
                 }
             }
         }
