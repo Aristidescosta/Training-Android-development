@@ -3,4 +3,6 @@
     <string name="calculate_tip">Calcular Gorjeta</string>
     <string name="bill_amount">Montante de dinheiro</string>
     <string name="tip_amount">Valor da gorjeta: %s</string>
+    <string name="how_was_the_service">Porcentagem de gorjeta</string>
+    <string name="round_up_tip">Arredondar?</string>
 </resources>
